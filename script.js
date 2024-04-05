@@ -108,11 +108,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         elapsedTimeElement.innerText= elapsedTime;
     }
     function rematch() {
+        cards.forEach(card => card.classList.remove('matched'));
+
+        cards.forEach(card => card.classList.remove('flip'));
+
+        remainingPairs = cards.length / 2;
+        document.querySelector('p').textContent = `Coppie rimanenti: ${remainingPairs}`;
 
         const container = document.getElementsByClassName('container')[0]
         container.classList.remove('d-none');
 
         const end = document.getElementsByClassName('end')[0]
         end.classList.add('d-none');
+
+        startTime = null;
+        endTime = null;
+
+        shuffleCards();
     }
+    document.querySelector('.button').addEventListener('click', rematch);
 });
