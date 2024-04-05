@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         firstCard = null;
         secondCard = null;
         remainingPairs--;
-        document.querySelector('p1').textContent = `Coppie rimanenti: ${remainingPairs}`;
+        document.querySelector('p').textContent = `Coppie rimanenti: ${remainingPairs}`;
         lockBoard = false;
 
         if (remainingPairs === 0) {
