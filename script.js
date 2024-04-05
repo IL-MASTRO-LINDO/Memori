@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await shuffleCards();
 
     cards.forEach(card => card.addEventListener('click', flipCard));
+
     function flipCard() {
         if (lockBoard || this.classList.contains('flip')) return;
 
@@ -34,9 +35,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         secondCard = this;
         checkForMatch();
     }
+
     function revealCard(card) {
         card.classList.add('flip');
     }
+
     function checkForMatch() {
         lockBoard = true;
 
@@ -49,6 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             setTimeout(unflipCards, 1000);
         }
     }
+
     function disableCards() {
         firstCard.classList.add('matched');
         secondCard.classList.add('matched');
@@ -63,6 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             endGame();
         }
     }
+
     function unflipCards() {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
@@ -74,8 +79,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function getImageObject(index) {
         const response = await fetch(link);
         const blob = await response.blob();
-        return {index:index, src:URL.createObjectURL(blob)}
+        return {index: index, src: URL.createObjectURL(blob)}
     }
+
     async function shuffleCards() {
         const cardImages = document.querySelectorAll('.gameImage');
 
@@ -89,6 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
         lockBoard = false;
     }
+
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -96,6 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         return array;
     }
+
     function endGame() {
         const container = document.getElementsByClassName('container')[0]
         container.classList.add('d-none');
@@ -105,8 +113,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const elapsedTime = (endTime - startTime) / 1000;
         const elapsedTimeElement = document.getElementsByClassName('time')[0];
-        elapsedTimeElement.innerText= elapsedTime;
+        elapsedTimeElement.innerText = elapsedTime;
     }
+
+
     function rematch() {
         cards.forEach(card => card.classList.remove('matched'));
 
@@ -126,5 +136,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         shuffleCards();
     }
+
     document.querySelector('.button').addEventListener('click', rematch);
 });
