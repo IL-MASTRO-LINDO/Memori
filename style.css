@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+}
+html,body {
+    background-color: gray;
+    color: white;
+    max-height: 100%;
+    margin: 0;
+}
+
+.container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    gap: 2rem;
+    margin: auto;
+    max-height: 100%;
+}
+
+.header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    max-width: 1250px;
+    width: 100%;
+    display: grid;
+}
+
+h1 {
+    font-size: 80px;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    color: white;
+    font-size: 45px;
+    margin: 0;
+    float: right;
+    margin-bottom: 20px;
+    text-align: center;
+    color: yellow;
+}
+
+.intro {
+    margin: auto;
+    max-width: 60%;
+}
+
+.carte {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(70px, 300px));
+    grid-gap: 10px;
+    margin: auto;
+    grid-auto-rows: minmax(70px, 300px);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.matched {
+    opacity: .1;
+}
+
+.grid-item {
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.flip .card {
+    transform: rotateY(180deg);
+}
+
+.backSide, .gameSide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.gameSide {
+    transform: rotateY(180deg);
+}
+
+.gameSide img, .backSide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.end {
+    text-align: center;
+}
+
+h2 {
+    font-size: 150px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 80px;
+    text-align: center;
+}
+
+.button {
+    font-size: 50px;
+    text-align: center;
+}
+
+.d-none {
+    display: none;
+}
